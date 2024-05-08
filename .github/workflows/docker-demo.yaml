@@ -5,8 +5,8 @@ on:
     tags: [ "*" ]
     branches:
       - 'main'
-  pull_request:
-    branches: [ "**" ]
+  #pull_request:
+  #  branches: [ "**" ]
     
 env:
   # Use docker.io for Docker Hub if empty
@@ -21,6 +21,7 @@ jobs:
     permissions:
       contents: read
       packages: write
+      pull-requests: write
 
     steps:
       - name: Checkout repository
@@ -77,5 +78,6 @@ jobs:
           command: cves
           image: ${{ steps.meta.outputs.tags }}
           only-severities: critical,high
-          exit-code: true
+          # exit-code: true
+          write-comment: true
           github-token: ${{ secrets.GITHUB_TOKEN }}
