@@ -21,6 +21,7 @@ jobs:
     permissions:
       contents: read
       packages: write
+      pull-requests: write
 
     steps:
       - name: Checkout repository
@@ -77,5 +78,6 @@ jobs:
           command: cves
           image: ${{ steps.meta.outputs.tags }}
           only-severities: critical,high
-          exit-code: true
-          token: ${{ secrets.SCOUT_TOKEN }}
+          # exit-code: true
+          write-comment: true
+          github-token: ${{ secrets.GITHUB_TOKEN }}
