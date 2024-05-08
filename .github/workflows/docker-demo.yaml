@@ -5,8 +5,8 @@ on:
     tags: [ "*" ]
     branches:
       - 'main'
-  pull_request:
-    branches: [ "**" ]
+  #pull_request:
+  #  branches: [ "**" ]
     
 env:
   # Use docker.io for Docker Hub if empty
